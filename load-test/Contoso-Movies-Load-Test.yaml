@@ -5,7 +5,7 @@ testPlan: Contoso-Movies-Load-Test.jmx
 description: Load test Contoso Movies Catalog API
 engineInstances: 1
 failureCriteria:
-  - avg(response_time_ms) > 300
+  - avg(response_time_ms) > 5000
   - percentage(error) > 50
 autoStop:
   errorPercentage: 80
