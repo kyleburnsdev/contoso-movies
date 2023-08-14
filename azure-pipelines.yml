@@ -16,5 +16,11 @@ steps:
      
 - task: DotNetCoreCLI@2
   inputs:
-    command: restore
-    projects: '**/*.csproj' 
+    command: 'publish'
+    arguments: '--output $(Build.ArtifactStagingDirectory)' 
+    zipAfterPublish: True
+  
+- task: PublishBuildArtifacts@1
+  inputs:
+   TargetPath: '$(Build.ArtifactStagingDirectory)'
+   ArtifactName: 'functionApp'
