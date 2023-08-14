@@ -1,0 +1,12 @@
+version: v0.1
+testId: ContosoMoviesCatalogLoad
+displayName: Contoso Movies Catalog Load
+testPlan: Contoso-Movies-Load-Test.jmx
+description: Load test Contoso Movies Catalog API
+engineInstances: 1
+failureCriteria:
+  - avg(response_time_ms) > 300
+  - percentage(error) > 50
+autoStop:
+  errorPercentage: 80
+  timeWindow: 60
