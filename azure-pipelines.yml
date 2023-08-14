@@ -43,8 +43,10 @@ steps:
    package: '$(System.ArtifactsDirectory)/**/*.zip'
    deploymentMethod: 'auto'
 
-# Azure Load Testing v1
-# Automate performance regression testing with Azure Load Testing.
+- script: |
+    pwd
+    ls -R
+
 - task: AzureLoadTest@1
   inputs:
     azureSubscription: 'azure-demo-subscription'
