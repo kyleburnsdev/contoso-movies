@@ -8,3 +8,5 @@ done
 az bicep install
 
 npm i -g azure-functions-core-tools@4 --unsafe-perm true
+
+dotnet tool install --global dotnet-ef
