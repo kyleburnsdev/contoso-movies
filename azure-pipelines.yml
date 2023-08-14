@@ -17,8 +17,9 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    arguments: '--output $(Build.ArtifactStagingDirectory)' 
+    arguments: ' --output $(Build.ArtifactStagingDirectory)' 
     zipAfterPublish: True
+    workingDirectory: '$(Agent.BuildDirectory)/1/s/src/Contoso.Movies.Catalog'
   
 - task: PublishBuildArtifacts@1
   inputs:
