@@ -16,6 +16,10 @@ steps:
      
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'restore'
+    workingDirectory: '$(Agent.BuildDirectory)/1/s/src/Contoso.Movies.Catalog'
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'build'
     arguments: ' --output $(Build.ArtifactStagingDirectory)/func' 
     workingDirectory: '$(Agent.BuildDirectory)/1/s/src/Contoso.Movies.Catalog'
