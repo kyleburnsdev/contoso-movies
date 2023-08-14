@@ -13,7 +13,7 @@ steps:
 - task: UseDotNet@2
   inputs:
      version: '7.x'
-     
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
@@ -21,10 +21,24 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    arguments: ' --output $(Build.ArtifactStagingDirectory)/func' 
+    arguments: ' --output $(Build.ArtifactStagingDirectory)/funcStage' 
     projects: '**/ContosoMovies_Catalog.csproj'
-  
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/funcStage'
+    includeRootFolder: false
+    archiveFile: '$(Build.ArtifactStagingDirectory)/func/build$(Build.BuildNumber).zip'
+
 - task: PublishBuildArtifacts@1
   inputs:
-   TargetPath: '$(Build.ArtifactStagingDirectory)/func'
-   ArtifactName: 'functionApp'
+   TargetPath: '$(Build.ArtifactStagingDirectory)/func/build$(Build.BuildNumber).zip'
+   ArtifactName: 'drop'
+
+- task: AzureFunctionApp@2
+  inputs:
+   connectedServiceNameARM: 'azure-demo-environment'
+   appType: 'functionAppLinux'
+   appName: '20230814-alt-func'
+   package: '$(System.ArtifactsDirectory)/**/*.zip'
+   deploymentMethod: 'auto'
