@@ -16,12 +16,11 @@ steps:
      
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'publish'
-    arguments: ' --output $(Build.ArtifactStagingDirectory)' 
-    zipAfterPublish: True
+    command: 'build'
+    arguments: ' --output $(Build.ArtifactStagingDirectory)/func' 
     workingDirectory: '$(Agent.BuildDirectory)/1/s/src/Contoso.Movies.Catalog'
   
 - task: PublishBuildArtifacts@1
   inputs:
-   TargetPath: '$(Build.ArtifactStagingDirectory)'
+   TargetPath: '$(Build.ArtifactStagingDirectory)/func'
    ArtifactName: 'functionApp'
