@@ -37,7 +37,7 @@ steps:
 
 - task: AzureFunctionApp@2
   inputs:
-   connectedServiceNameARM: 'azure-demo-environment'
+   connectedServiceNameARM: 'azure-demo-subscription'
    appType: 'functionAppLinux'
    appName: '20230814-alt-func'
    package: '$(System.ArtifactsDirectory)/**/*.zip'
