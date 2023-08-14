@@ -42,3 +42,13 @@ steps:
    appName: '20230814-alt-func'
    package: '$(System.ArtifactsDirectory)/**/*.zip'
    deploymentMethod: 'auto'
+
+# Azure Load Testing v1
+# Automate performance regression testing with Azure Load Testing.
+- task: AzureLoadTest@1
+  inputs:
+    azureSubscription: 'azure-demo-subscription'
+    loadTestConfigFile: '$(Build.SourcesDirectory)/load-test/Contoso-Movies-Load-Test.yaml'  
+    resourceGroup: 'scratch-pad-rg'
+    loadTestResource: 'a20230814-alt-loadtest' 
+    loadTestRunName: $(Build.BuildNumber) 
