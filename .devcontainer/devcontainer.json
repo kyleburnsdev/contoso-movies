@@ -38,5 +38,9 @@
         }
     },
     "postCreateCommand": "/bin/bash ./.devcontainer/post-create.sh > ~/post-create.log",
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+    "containerEnv": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    }
 }
