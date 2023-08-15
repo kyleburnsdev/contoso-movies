@@ -51,6 +51,5 @@ steps:
     loadTestResource: 'a20230814-alt-loadtest' 
     loadTestRunName: $(Build.BuildNumber) 
 
-- script: |
-    pwd
-    ls -R
+- publish: $(System.DefaultWorkingDirectory)/loadTest
+  artifact: loadTestResults
