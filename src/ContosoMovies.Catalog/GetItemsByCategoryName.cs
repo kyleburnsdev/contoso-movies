@@ -22,7 +22,10 @@ namespace ContosoMovies.Catalog
             , Route = "category/{CategoryName}")] HttpRequestData req, string CategoryName)
         {
             _logger.LogInformation("Retrieving movies for category");
-            return _moviesContext.Items.Where(i => i.CategoryNavigation.CategoryName == CategoryName).ToList();         
+            return _moviesContext.Items
+                                 .Where(i => i.CategoryNavigation.CategoryName == CategoryName)
+                                 .AsNoTracking()
+                                 .ToList();         
         }
     }
 }
