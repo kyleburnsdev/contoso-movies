@@ -43,10 +43,6 @@ steps:
    package: '$(System.ArtifactsDirectory)/**/*.zip'
    deploymentMethod: 'auto'
 
-- script: |
-    pwd
-    ls -R
-
 - task: AzureLoadTest@1
   inputs:
     azureSubscription: 'azure-demo-subscription'
@@ -54,3 +50,7 @@ steps:
     resourceGroup: 'scratch-pad-rg'
     loadTestResource: 'a20230814-alt-loadtest' 
     loadTestRunName: $(Build.BuildNumber) 
+
+- script: |
+    pwd
+    ls -R
