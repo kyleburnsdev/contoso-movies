@@ -16,8 +16,8 @@ var host = new HostBuilder()
     .ConfigureServices(s =>
     {
         s.AddDbContext<MoviesContext>(options =>
-            options.UseSqlServer(config.GetConnectionString("Movies")
-                   .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)) );
+            options.UseSqlServer(config.GetConnectionString("Movies"))
+                   .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking) );
     })
     .Build();
 
